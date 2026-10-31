@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/physics-vision/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大学物理可视化学习站</title>
+    <script>
+      // 配合 public/404.html：GitHub Pages 把深链接转到 /?/路径 后，在路由启动前还原地址。
+      ;(function () {
+        var l = window.location
+        if (l.search[1] !== '/') return
+        var decoded = l.search
+          .slice(1)
+          .split('&')
+          .map(function (s) {
+            return s.replace(/~and~/g, '&')
+          })
+          .join('?')
+        var base = l.pathname.replace(/\/index\.html$/, '/').replace(/\/$/, '')
+        window.history.replaceState(null, '', base + decoded + l.hash)
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
